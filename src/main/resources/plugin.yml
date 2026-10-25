@@ -1,0 +1,13 @@
+name: FloatingFrames
+version: '${version}'
+main: urza.floatingframes.FloatingFramesPlugin
+api-version: '26.2'
+folia-supported: true
+author: Urza
+description: Crouch-punch item frames to toggle invisibility and unsupported placement.
+# Homestead registers its HIGHEST protection listeners before our HIGHEST listeners.
+softdepend: [Homestead]
+permissions:
+  floatingframes.toggle:
+    description: Toggle item frame visibility with crouch-left-click
+    default: true
