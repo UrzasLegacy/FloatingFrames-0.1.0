@@ -1,5 +1,7 @@
 package urza.floatingframes;
 
+import io.papermc.paper.event.player.PlayerItemFrameChangeEvent;
+import io.papermc.paper.event.player.PlayerItemFrameChangeEvent.ItemFrameChangeAction;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.NamespacedKey;
@@ -55,6 +57,19 @@ final class FrameListener implements Listener {
 
         // Do not change normal frames, paintings, or frames hidden by other plugins.
         if (!frame.isVisible() && isManaged(frame)) event.setCancelled(true);
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onItemRemoved(PlayerItemFrameChangeEvent event) {
+        if (event.getAction() != ItemFrameChangeAction.REMOVE) return;
+
+        ItemFrame frame = event.getItemFrame();
+
+        // Only affect invisible frames managed by this plugin.
+        if (frame.isVisible() || !isManaged(frame)) return;
+
+        frame.setVisible(true);
+        frame.getPersistentDataContainer().remove(floatingKey);
     }
 
     private boolean canToggle(ItemFrame frame, Player player) {

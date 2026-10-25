@@ -18,7 +18,7 @@ The setting is stored on the entity and is intended to survive chunk unloads and
 ## Install using Crafty
 
 1. Stop the test server.
-2. Upload `dist/FloatingFrames-0.1.0.jar` from this download into the server's `plugins` folder. For updates, remove the previous FloatingFrames JAR first.
+2. Upload the jar found in dist from this download into the server's `plugins` folder. For updates, remove the previous FloatingFrames JAR first.
 3. Start the server. Check the console for successful loading and `/plugins` for FloatingFrames.
 4. Join using a normal Minecraft client and try the checklist below.
 
@@ -45,7 +45,7 @@ Item frames are entities. The plugin does not disable block updates or use a rep
 
 Paper also uses PHYSICS for piston-induced hanging-entity removal, so managed hidden frames resist that removal too. Obstruction is a separate cause and is not cancelled; placing a block in the frame's occupied space can still break it.
 
-Using `setFixed(true)` would interfere with normal item interaction, so this implementation leaves that property alone. Empty and filled frame hits take different server event paths, both handled here. Event callbacks mutate only their own frame synchronously, without cross-region operations, and the plugin declares Folia support.
+Using `setFixed(true)` would interfere with normal item interaction, so this implementation leaves that property alone. Empty and filled frame hits take different server event paths, both handled here. Event callbacks mutate only their own frame synchronously, without cross-region operations.
 
 Protection: cancelled interaction events are respected. Homestead is an optional load-order dependency so its HIGHEST protection listeners register before this plugin's HIGHEST listeners. This is based on the inspected Homestead source, not a live integration test. Verify the claim checklist with your installed version; arbitrary protection plugins registering later at the same priority are not guaranteed to run first.
 
