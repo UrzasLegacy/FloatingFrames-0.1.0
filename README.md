@@ -11,7 +11,7 @@ A small server-side plugin for Folia 26.2 and Java 25. No client mod required.
 | Left-click without crouching | Normal item removal / frame breaking |
 | Right-click | Normal item insertion / rotation |
 
-Works with normal and glow item frames, empty or filled. To float a frame, place it against a temporary block, hide it, then remove that block. Making it visible again restores the support requirement: an unsupported frame can break on its next support check. Replace its support first if you want to keep it visible.
+Works with normal and glow item frames, empty or filled. To float a frame, place it against a temporary block, hide it, then remove that block. Making it visible again restores the support requirement: an unsupported frame can break on its next support check. Replace its support first if you want to keep it visible. Removing an item from an invisible frame will revert the frame back to visible.
 
 The setting is stored on the entity and is intended to survive chunk unloads and server restarts. Breaking and placing the frame creates a normal visible frame. Invisible frames created by other tools, fixed frames, and invulnerable frames are left alone.
 
